@@ -4,7 +4,7 @@ const dummyTransactions = [
   { id: 1, name: "Bolo de brigadeiro", amount: -20 },
   { id: 2, name: "Salário", amount: 300 },
   { id: 3, name: "Torta de Frango", amount: -10 },
-  { id: 4, name: "Violão", amount: 150 },
+  { id: 4, name: "Violão", amount: 150 }
 ];
 
 const addTransactionIntoDOM = (transaction) => {
@@ -22,8 +22,16 @@ const addTransactionIntoDOM = (transaction) => {
 };
 
 const updateBalanceValues = () => {
-    const transactionsAmounts = dummyTransactions.map(transaction => transaction.amount)
-    console.log(transactionsAmounts)
+    const transactionsAmounts = dummyTransactions   
+    .map(transaction => transaction.amount)
+    const total = transactionsAmounts   
+    .reduce((accumulator, transaction) => accumulator + transaction, 0) 
+    .toFixed(2)
+    const income =transactionsAmounts   
+    .filter(value => value > 0) 
+    .reduce((accumulator, value) => accumulator + value, 0) 
+    .toFixed(2)
+    console.log(income)
 }
 
 const init = () => {
