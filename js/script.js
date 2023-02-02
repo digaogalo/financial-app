@@ -1,4 +1,10 @@
 const transactionsUl = document.querySelector('#transactions')
+const incomeDisplay = document.querySelector('#money-plus')
+const expenseDisplay = document.querySelector('#money-minus')
+const balanceDisplay = document.querySelector('#balance')
+const form = document.querySelector('#form')
+const inputTransactionName = document.querySelector('#text')
+const inputTransactionAmount = document.querySelector('#amount')
 
 const dummyTransactions = [
   { id: 1, name: "Bolo de brigadeiro", amount: -20 },
@@ -31,7 +37,14 @@ const updateBalanceValues = () => {
     .filter(value => value > 0) 
     .reduce((accumulator, value) => accumulator + value, 0) 
     .toFixed(2)
-    console.log(income)
+    const expense = Math.abs(transactionsAmounts 
+    .filter(value => value < 0) 
+    .reduce((accumulator, value) =>  accumulator + value, 0)) 
+    .toFixed(2)
+  
+    balanceDisplay.textContent = `R$ ${total}`
+    incomeDisplay.textContent = `R$ ${income}`
+    expenseDisplay.textContent = `R$ ${expense}`
 }
 
 const init = () => {
@@ -40,3 +53,11 @@ const init = () => {
 }
 
 init()
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+
+  if (inputTransactionName.value.trim() === '' || inputTransactionAmount.value.trim() === '') {
+    alert('Por favor, preencha o campo Nome e  valor da transação ')
+  }
+})
