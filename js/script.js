@@ -89,16 +89,13 @@ const handleFormSubmit = e => {
 
   const transactionName = inputTransactionName.value.trim()
   const transactionAmount = inputTransactionAmount.value.trim()
-  const isSomeInputEmpty = transactionName === '' || transactionAmount === ''
+  const isSomeInputEmpty = transactionName === '' || transactionAmount === '' 
 
   if (isSomeInputEmpty) {
-    alert('Please fill in the Transaction name and amount field')
+    alert('Esse campo está vazio')
     return
   }
-  const transaction = { 
-    
-  }
-
+  
   addToTransactionsArray(transactionName, transactionAmount)
   init()
   updateLocalStorage()
